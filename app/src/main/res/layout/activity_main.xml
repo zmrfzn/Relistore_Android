@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sendRequest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/getHttp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Http Request" />
+
+    <Button
+        android:id="@+id/crashButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Crash Me" />
+
+    <Button
+        android:id="@+id/customAttribute1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="store ID" />
+
+    <Button
+        android:id="@+id/customAttribute2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate" />
+
+    <Button
+        android:id="@+id/customEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Car / user action event" />
+
+    <Button
+        android:id="@+id/breadCrumb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Breadcrumb" />
+
+    <Button
+        android:id="@+id/handledException"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cause Handled Exception" />
+
+    <Button
+        android:id="@+id/appNotResponding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cause ANR" />
+
+    <Button
+        android:id="@+id/nextPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Next Page" />
+
+    <EditText
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Results" />
+
+</LinearLayout>

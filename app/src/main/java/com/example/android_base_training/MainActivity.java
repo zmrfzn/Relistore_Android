@@ -33,9 +33,11 @@ import com.newrelic.agent.android.util.NetworkFailure;
 public class MainActivity extends AppCompatActivity {
  private Button crashme, getHttp, customattr1, customattr2, event, bread, handled, anr, newpage;
  private TextView resultText;
- public String url = "http://192.168.1.2:3001/webrequest";
+ public String url = "http://192.168.1.6:3001/webrequest";
 
-   String token = "<YOUR TOKEN>";
+
+
+    String token = "AA7686a958074ac7c900926d95679c2e93adf13acf-NRMA";
 
     public class BubbleSortExample {
         public void bubbleSort(int[] arr) {
@@ -145,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 attributes.put("maxSpeed", 12);
 
                 NewRelic.recordCustomEvent("Car", attributes);
-
+                resultText.setText("recordCustomEvent : Car");
                 Log.i("demo", "Sending Event: Car");
 
                 Map<String, Object> userActionAttributes = new HashMap<String, Object>();
@@ -250,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            resultText.setText("onPostExecute()");
             if (s != null) {
                 Log.i("newrelic", s);
                 resultText.setText(s);

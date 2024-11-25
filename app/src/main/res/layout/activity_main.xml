@@ -8,6 +8,10 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="125dp" />
+
     <Button
         android:id="@+id/getHttp"
         android:layout_width="match_parent"
@@ -62,12 +66,16 @@
         android:layout_height="wrap_content"
         android:text="Go to Next Page" />
 
-    <EditText
+
+
+    <TextView
         android:id="@+id/resultText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_height="match_parent"
+        android:ems="15"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
         android:text="Results" />
 
 </LinearLayout>

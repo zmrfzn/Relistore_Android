@@ -9,5 +9,6 @@
 
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">172.24.16.167</domain>
+        <domain includeSubdomains="true">3.230.230.121</domain>
     </domain-config>
 </network-security-config>

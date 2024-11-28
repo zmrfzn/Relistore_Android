@@ -33,7 +33,7 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity {
  private Button crashme, getHttp, customattr1, customattr2, event, bread, handled, anr, newpage;
  private TextView resultText;
- public String url = "http://192.168.1.6:3001/webrequest";
+ public String url = "http://3.230.230.121/mobile1/webrequest";
 
  public final Handler handler = new Handler();
 

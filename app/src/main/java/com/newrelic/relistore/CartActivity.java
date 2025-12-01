@@ -66,6 +66,15 @@ public class CartActivity extends BaseActivity {
 
         double total = Cart.getInstance().getTotal();
         cartTotal.setText(String.format("Total: $%.2f", total));
+
+        Button btnCheckout = findViewById(R.id.btnCheckout);
+        if (items.isEmpty()) {
+            btnCheckout.setEnabled(false);
+            btnCheckout.setAlpha(0.5f);
+        } else {
+            btnCheckout.setEnabled(true);
+            btnCheckout.setAlpha(1.0f);
+        }
     }
 
     @Override

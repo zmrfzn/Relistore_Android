@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Android_Base_Training" parent="Base.Theme.Android_Base_Training">
+        <item name="android:windowLayoutInDisplayCutoutMode">never</item>
+    </style>
+</resources>

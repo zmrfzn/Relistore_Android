@@ -64,8 +64,19 @@ public class DataRepository {
         }
     }
 
-    public boolean checkout() throws Exception {
-        Log.i(TAG, "Initiating checkout");
+    public boolean checkout(String paymentMethod) throws Exception {
+        Log.i(TAG, "Initiating checkout with method: " + paymentMethod);
+
+        // Simulate failure rates based on payment method
+        double failureRate = 0.20; // Default 20% for Credit Card
+        if ("PayPal".equalsIgnoreCase(paymentMethod) || "Apple Pay".equalsIgnoreCase(paymentMethod)) {
+            failureRate = 0.60; // 60% for others
+        }
+
+        if (Math.random() < failureRate) {
+            Log.e(TAG, "Checkout failed (simulated) for " + paymentMethod);
+            throw new IOException("Payment Declined (" + paymentMethod + ")");
+        }
 
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("total", Cart.getInstance().getTotal());

@@ -1,4 +1,4 @@
-package com.example.android_base_training;
+package com.newrelic.relistore;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.android_base_training.databinding.ActivitySecondinteractionBinding;
+import com.newrelic.relistore.databinding.ActivitySecondinteractionBinding;
 
 public class secondinteraction extends AppCompatActivity {
 

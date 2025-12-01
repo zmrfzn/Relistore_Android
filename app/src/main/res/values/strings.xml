@@ -21,4 +21,6 @@
     <string name="navigation_section_title">🧭 Navigation</string>
     <string name="results_section_title">📋 Results</string>
     <string name="ready_message">Ready to test New Relic features...</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Original Material Design Colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Dark Mode Theme Colors -->
+    <color name="background_light">#FF121212</color>
+    <color name="primary_card">#FF1B5E20</color>
+    <color name="result_background">#FF1E1E1E</color>
+    
+    <!-- Feature-specific Colors (Dark Mode) -->
+    <color name="network_color">#FF1565C0</color>
+    <color name="attribute_color">#FF6A1B9A</color>
+    <color name="event_color">#FFEF6C00</color>
+    <color name="breadcrumb_color">#FF00695C</color>
+    <color name="exception_color">#FFFF6F00</color>
+    <color name="anr_color">#FFC62828</color>
+    <color name="crash_color">#FF7B1FA2</color>
+    <color name="navigation_color">#FF37474F</color>
+</resources>

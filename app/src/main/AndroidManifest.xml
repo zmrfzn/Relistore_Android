@@ -17,6 +17,15 @@
         android:theme="@style/Theme.Android_Base_Training"
         tools:targetApi="33">
         <activity
+            android:name=".BreadcrumbPanelActivity"
+            android:exported="false"
+            android:label="Breadcrumb Panel"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".secondinteraction"
             android:exported="false"
             android:label="@string/title_activity_secondinteraction"

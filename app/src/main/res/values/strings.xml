@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Base App</string>
-    <string name="title_activity_secondinteraction">secondinteraction</string>
+    <string name="app_name">New Relic Demo</string>
+    <string name="title_activity_secondinteraction">Fragment Navigation</string>
+    
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -9,5 +10,15 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="crash_msg">Crashing application in 5 seconds</string>
+    
+    <!-- Demo app specific strings -->
+    <string name="crash_msg">💥 Crashing application in 5 seconds</string>
+    <string name="app_subtitle">Explore mobile monitoring features</string>
+    <string name="network_section_title">🌐 Network Testing</string>
+    <string name="monitoring_section_title">📊 Custom Attributes &amp; Events</string>
+    <string name="tracking_section_title">🔍 Tracking &amp; Debugging</string>
+    <string name="performance_section_title">⚡ Performance Testing</string>
+    <string name="navigation_section_title">🧭 Navigation</string>
+    <string name="results_section_title">📋 Results</string>
+    <string name="ready_message">Ready to test New Relic features...</string>
 </resources>

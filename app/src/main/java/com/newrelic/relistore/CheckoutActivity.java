@@ -74,15 +74,26 @@ public class CheckoutActivity extends BaseActivity {
 
         Log.i(TAG, "Attributes set: Tier=" + userTier + ", Method=" + paymentMethod + ", LoggedIn=" + loggedIn);
 
+        // Disable inputs
         btnPay.setEnabled(false);
+        for (int i = 0; i < paymentMethodGroup.getChildCount(); i++) {
+            paymentMethodGroup.getChildAt(i).setEnabled(false);
+        }
+
         checkoutProgress.setVisibility(View.VISIBLE);
         checkoutStatus.setText("Processing Payment...");
+        checkoutStatus.setVisibility(View.VISIBLE);
 
-        new CheckoutTask().execute();
+        new CheckoutTask(paymentMethod).execute();
     }
 
     private class CheckoutTask extends AsyncTask<Void, Void, Boolean> {
         private Exception exception;
+        private String paymentMethod;
+
+        public CheckoutTask(String paymentMethod) {
+            this.paymentMethod = paymentMethod;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -93,7 +104,7 @@ public class CheckoutActivity extends BaseActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             try {
-                return DataRepository.getInstance().checkout();
+                return DataRepository.getInstance().checkout(paymentMethod);
             } catch (Exception e) {
                 Log.e(TAG, "Checkout failed", e);
                 this.exception = e;
@@ -122,6 +133,12 @@ public class CheckoutActivity extends BaseActivity {
                 Log.e(TAG, "Checkout failed: " + (exception != null ? exception.getMessage() : "Unknown error"));
                 checkoutStatus.setText("❌ Payment Failed\n\n" +
                         (exception != null ? exception.getMessage() : "Please try again."));
+
+                // Re-enable inputs for retry
+                btnPay.setEnabled(true);
+                for (int i = 0; i < paymentMethodGroup.getChildCount(); i++) {
+                    paymentMethodGroup.getChildAt(i).setEnabled(true);
+                }
 
                 // Record PaymentFailure event
                 Map<String, Object> eventAttributes = new HashMap<>();

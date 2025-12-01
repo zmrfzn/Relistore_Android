@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
     <include layout="@layout/toolbar" />
 
@@ -13,69 +14,92 @@
         android:orientation="vertical"
         android:padding="32dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Payment Method"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Payment Method"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
-    <RadioGroup
-        android:id="@+id/paymentMethodGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="24dp">
-
-        <RadioButton
-            android:id="@+id/rbCreditCard"
+        <RadioGroup
+            android:id="@+id/paymentMethodGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Credit Card"
-            android:checked="true" />
+            android:orientation="vertical"
+            android:layout_marginBottom="32dp">
 
-        <RadioButton
-            android:id="@+id/rbPayPal"
+            <RadioButton
+                android:id="@+id/rbCreditCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Credit Card"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/payment_option_background"
+                android:elevation="4dp"
+                android:layout_margin="8dp"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbPayPal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PayPal"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/payment_option_background"
+                android:elevation="4dp"
+                android:layout_margin="8dp" />
+
+            <RadioButton
+                android:id="@+id/rbApplePay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apple Pay"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:background="@drawable/payment_option_background"
+                android:elevation="4dp"
+                android:layout_margin="8dp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnPay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PayPal" />
+            android:text="Pay Now"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:backgroundTint="@color/primary_card" />
 
-        <RadioButton
-            android:id="@+id/rbApplePay"
+        <ProgressBar
+            android:id="@+id/checkoutProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/checkoutStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Processing Payment..."
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apple Pay" />
-    </RadioGroup>
+            android:layout_marginTop="32dp"
+            android:text="Return to Home"
+            android:visibility="gone"
+            android:backgroundTint="@color/purple_500" />
 
-    <Button
-        android:id="@+id/btnPay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pay Now" />
-
-    <ProgressBar
-        android:id="@+id/checkoutProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:id="@+id/checkoutStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Processing Payment..."
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/btnHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Return to Home"
-        android:visibility="gone" />
-
-</LinearLayout>
+    </LinearLayout>
 </LinearLayout>

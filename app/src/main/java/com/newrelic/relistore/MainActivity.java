@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
-    private String token = "AA188b3a6a15b8a26a4b134bbcfe97ab94766ad25e-NRMA";
+    private String token = "REPLACE_WITH_YOUR_TOKEN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,13 +136,28 @@ public class MainActivity extends BaseActivity {
     }
 
     private void triggerANR() {
-        Toast.makeText(this, "Triggering ANR (Freeze) for 10s...", Toast.LENGTH_SHORT).show();
-        Log.i(TAG, "Triggering ANR...");
-        // Run heavy task on main thread
-        long endTime = System.currentTimeMillis() + 10000;
-        while (System.currentTimeMillis() < endTime) {
-            Math.sin(Math.random());
+        Toast.makeText(this, "Triggering ANR (Bubble Sort)...", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Triggering ANR with Bubble Sort...");
+
+        // Heavy computation on main thread
+        int[] array = new int[500000];
+        java.util.Random random = new java.util.Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt();
         }
+
+        // Bubble Sort
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+
+        Log.i(TAG, "ANR Bubble Sort Complete (if you see this, increase array size)");
     }
 
     @Override

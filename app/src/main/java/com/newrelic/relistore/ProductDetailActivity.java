@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.newrelic.relistore.model.Cart;
 import com.newrelic.relistore.model.Product;
-import com.newrelic.agent.android.NewRelic;
+// import com.newrelic.agent.android.NewRelic;
 import com.newrelic.relistore.data.DataRepository;
 import android.os.AsyncTask;
 import java.util.HashMap;
@@ -58,11 +58,11 @@ public class ProductDetailActivity extends BaseActivity {
                 .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(image);
 
-        // Record breadcrumb
-        Map<String, Object> attributes = new HashMap<>();
-        attributes.put("product_id", product.getId());
-        attributes.put("product_name", product.getName());
-        NewRelic.recordBreadcrumb("ViewProduct", attributes);
+        // Challenge 2.1: Record Breadcrumb
+        // Map<String, Object> attributes = new HashMap<>();
+        // attributes.put("product_id", product.getId());
+        // attributes.put("product_name", product.getName());
+        // NewRelic.recordBreadcrumb("ViewProduct", attributes);
 
         // Fetch full details from server (to demonstrate error cascading)
         new FetchProductDetailsTask().execute(product.getId());
@@ -71,13 +71,13 @@ public class ProductDetailActivity extends BaseActivity {
             Log.i(TAG, "Adding to cart: " + product.getName());
             Cart.getInstance().add(product);
 
-            // Record custom event
-            Map<String, Object> eventAttributes = new HashMap<>();
-            eventAttributes.put("product_id", product.getId());
-            eventAttributes.put("product_name", product.getName());
-            eventAttributes.put("price", product.getPrice());
-            eventAttributes.put("category", product.getCategory());
-            NewRelic.recordCustomEvent("AddToCart", eventAttributes);
+            // Challenge 4.1: Record Custom Event (AddToCart)
+            // Map<String, Object> eventAttributes = new HashMap<>();
+            // eventAttributes.put("product_id", product.getId());
+            // eventAttributes.put("product_name", product.getName());
+            // eventAttributes.put("price", product.getPrice());
+            // eventAttributes.put("category", product.getCategory());
+            // NewRelic.recordCustomEvent("AddToCart", eventAttributes);
 
             Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
         });
@@ -103,7 +103,8 @@ public class ProductDetailActivity extends BaseActivity {
                 Log.i(TAG, "Product details fetched successfully");
             } else {
                 Log.e(TAG, "Error fetching product details", exception);
-                NewRelic.recordHandledException(exception);
+                // Challenge 3.1: Record Handled Exception
+                // NewRelic.recordHandledException(exception);
                 Toast.makeText(ProductDetailActivity.this, "Error loading details: " + exception.getMessage(),
                         Toast.LENGTH_LONG).show();
             }

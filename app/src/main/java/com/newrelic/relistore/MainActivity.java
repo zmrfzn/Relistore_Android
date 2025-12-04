@@ -17,8 +17,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.newrelic.relistore.data.DataRepository;
 import com.newrelic.relistore.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.newrelic.agent.android.FeatureFlag;
-import com.newrelic.agent.android.NewRelic;
+// Challenge 1.2: Import New Relic Agent
+// import com.newrelic.agent.android.FeatureFlag;
+// import com.newrelic.agent.android.NewRelic;
 import java.util.List;
 
 import com.newrelic.relistore.BaseActivity;
@@ -45,16 +46,17 @@ public class MainActivity extends BaseActivity {
             return insets;
         });
 
-        // Initialize New Relic
-        NewRelic.enableFeature(FeatureFlag.NativeReporting);
-        NewRelic.enableFeature(FeatureFlag.OfflineStorage);
-        NewRelic.withApplicationToken(token)
-                .withLoggingEnabled(true)
-                .start(this.getApplicationContext());
+        // Challenge 1.2: Initialize New Relic
+        // NewRelic.enableFeature(FeatureFlag.NativeReporting);
+        // NewRelic.enableFeature(FeatureFlag.OfflineStorage);
+        // NewRelic.withApplicationToken(token)
+        // .withLoggingEnabled(true)
+        // .start(this.getApplicationContext());
 
         // Generate and set Session ID
         String sessionId = java.util.UUID.randomUUID().toString();
-        NewRelic.setAttribute("userSessionId", sessionId);
+        // Challenge 4.2: Set User Tier Attribute
+        // NewRelic.setAttribute("userSessionId", sessionId);
         Log.i(TAG, "Session ID set: " + sessionId);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -89,7 +91,7 @@ public class MainActivity extends BaseActivity {
                 return DataRepository.getInstance().getProducts();
             } catch (Exception e) {
                 Log.e(TAG, "Error fetching products", e);
-                NewRelic.recordHandledException(e);
+                // NewRelic.recordHandledException(e);
                 return null;
             }
         }

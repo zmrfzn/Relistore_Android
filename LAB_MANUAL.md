@@ -14,7 +14,9 @@ Before starting the labs, ensure you have the following:
 
 ---
 
-## Lab 1: Agent Installation & Setup (15 Minutes)
+<details open>
+<summary><h2>🚀 Lab 1: Agent Installation & Setup (15 Minutes)</h2></summary>
+
 **Scenario**: You have just joined the "Reli-Store" mobile team. The Product Manager complains that the app feels "slow" and users are reporting random issues, but there is no data to back this up. Your first task is to turn on the lights.
 
 **Objective**: Connect the Reli-Store app to New Relic to establish a baseline of performance and stability.
@@ -44,9 +46,11 @@ The agent is installed but not running.
     *   **Summary Page**: Do you see the "App Launches" count increment?
     *   **Service Maps**: Is the app talking to any external services?
 
----
+</details>
 
-## Lab 2: Breadcrumbs & Interactions (15 Minutes)
+<details>
+<summary><h2>🍞 Lab 2: Breadcrumbs & Interactions (15 Minutes)</h2></summary>
+
 **Scenario**: Support tickets are coming in saying "I can't see the product details". Engineering can't reproduce it. You need to know *what* the user did right before the issue occurred.
 
 **Objective**: Track the user's journey through the app using Breadcrumbs.
@@ -64,9 +68,11 @@ We need to know when a user views a specific product.
     *   **Query**: `SELECT * FROM MobileBreadcrumb SINCE 30 minutes ago`
     *   **Analysis**: Can you reconstruct the user's path? (e.g., Home -> Product A -> Home -> Product B).
 
----
+</details>
 
-## Lab 3: Handled Exceptions & HTTP Errors (20 Minutes)
+<details>
+<summary><h2>🐛 Lab 3: Handled Exceptions & HTTP Errors (20 Minutes)</h2></summary>
+
 **Scenario**: Users are reporting that sometimes the product details don't load, but the app doesn't crash. It just shows a blank screen or an error message. These "silent failures" are hurting conversion.
 
 **Objective**: Track non-fatal errors and network failures.
@@ -85,11 +91,13 @@ The `FetchProductDetailsTask` in `ProductDetailActivity.java` has a `try-catch` 
 1.  **New Relic Platform**:
     *   Go to **Handled Exceptions**.
     *   **Analysis**: Find the exception you just triggered. Look at the stack trace.
-    *   Go to **HTTP Errors**: Did the network failure show up as a domain lookup error or connection timeout?
+    *   **HTTP Errors**: Did the network failure show up as a domain lookup error or connection timeout?
 
----
+</details>
 
-## Lab 4: Custom Metrics, Attributes & Events (20 Minutes)
+<details>
+<summary><h2>📊 Lab 4: Custom Metrics, Attributes & Events (20 Minutes)</h2></summary>
+
 **Scenario**: The Marketing team wants to know which product categories are most popular and how much revenue is sitting in carts. The standard "crash rate" metrics don't tell them this.
 
 **Objective**: Instrument the app to track business KPIs (Key Performance Indicators).
@@ -116,9 +124,11 @@ We want to compare the experience of "Premium" users vs "Standard" users.
     *   **Widget 2 (Popularity)**: Create a Bar Chart showing count of adds by category.
         *   `SELECT count(*) FROM AddToCart FACET category`
 
----
+</details>
 
-## Lab 5: Crash Analysis (15 Minutes)
+<details>
+<summary><h2>💥 Lab 5: Crash Analysis (15 Minutes)</h2></summary>
+
 **Scenario**: Critical Alert! The app is crashing for users when they try to access the "Crash Test" feature (ironic, isn't it?). We need to find the root cause immediately.
 
 **Objective**: Analyze a fatal crash, identify the line of code, and understand the context.
@@ -135,6 +145,8 @@ The developer left a "Crash Test" button in the production build (oops).
     *   **Triage**: Click on the crash group.
     *   **Root Cause**: Look at the **Stack Trace**. Which line number failed?
     *   **Context**: Click the **Breadcrumbs** tab. Did you see the `ViewProduct` events leading up to this crash? This proves the user was browsing before they decided to crash the app.
+
+</details>
 
 ---
 

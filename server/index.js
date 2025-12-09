@@ -6,8 +6,50 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
+const fs = require('fs');
+const path = require('path');
+const marked = require('marked');
+
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve Lab Manual
+app.get('/manual', (req, res) => {
+    const manualPath = path.join(__dirname, '../LAB_MANUAL.md');
+    fs.readFile(manualPath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('[ERROR] Failed to read LAB_MANUAL.md', err);
+            return res.status(500).send('Error loading lab manual');
+        }
+        const htmlContent = marked.parse(data);
+        const fullHtml = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Reli-Store Workshop Manual</title>
+                <style>
+                    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+                    h1, h2, h3 { color: #000d26; }
+                    code { background: #f4f5f7; padding: 2px 5px; border-radius: 3px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+                    pre { background: #f4f5f7; padding: 15px; border-radius: 5px; overflow-x: auto; }
+                    details { background: #fff; border: 1px solid #e0e0e0; border-radius: 5px; margin-bottom: 10px; padding: 10px; }
+                    details[open] { border-color: #00ce7c; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+                    summary { cursor: pointer; font-weight: bold; padding: 5px; outline: none; }
+                    summary:hover { color: #00ce7c; }
+                    a { color: #00ce7c; text-decoration: none; }
+                    a:hover { text-decoration: underline; }
+                </style>
+            </head>
+            <body>
+                ${htmlContent}
+            </body>
+            </html>
+        `;
+        res.send(fullHtml);
+    });
+});
 
 // In-memory product store
 const products = [
@@ -116,4 +158,12 @@ app.post('/checkout', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Reli-Store Server listening on port ${port}`);
+    const url = `http://localhost:${port}/manual`;
+    console.log(`📖 Workshop Manual available at: ${url}`);
+
+    // Auto-open browser
+    const { exec } = require('child_process');
+    const command = process.platform === 'darwin' ? 'open' :
+        process.platform === 'win32' ? 'start' : 'xdg-open';
+    exec(`${command} ${url}`);
 });

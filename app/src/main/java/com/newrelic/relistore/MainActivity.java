@@ -55,8 +55,8 @@ public class MainActivity extends BaseActivity {
 
         // Generate and set Session ID
         String sessionId = java.util.UUID.randomUUID().toString();
-        // Challenge 4.2: Set User Tier Attribute
-        NewRelic.setAttribute("userSessionId", sessionId);
+        // Challenge 4.2: Set User Identifier
+        NewRelic.setUserId(sessionId);
         Log.i(TAG, "Session ID set: " + sessionId);
 
         recyclerView = findViewById(R.id.recyclerView);

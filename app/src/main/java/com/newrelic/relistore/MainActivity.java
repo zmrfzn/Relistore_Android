@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.newrelic.relistore.data.DataRepository;
 import com.newrelic.relistore.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+// Challenge 1.2: Import New Relic Agent
 import com.newrelic.agent.android.FeatureFlag;
 import com.newrelic.agent.android.NewRelic;
 import java.util.List;
@@ -31,7 +32,7 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
-    private String token = "***REMOVED***";
+    private String token = "REPLACE_WITH_YOUR_TOKEN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity {
             return insets;
         });
 
-        // Initialize New Relic
+        // Challenge 1.2: Initialize New Relic
         NewRelic.enableFeature(FeatureFlag.NativeReporting);
         NewRelic.enableFeature(FeatureFlag.OfflineStorage);
         NewRelic.withApplicationToken(token)
@@ -54,7 +55,8 @@ public class MainActivity extends BaseActivity {
 
         // Generate and set Session ID
         String sessionId = java.util.UUID.randomUUID().toString();
-        NewRelic.setAttribute("userSessionId", sessionId);
+        // Challenge 4.2: Set User Identifier
+        NewRelic.setUserId(sessionId);
         Log.i(TAG, "Session ID set: " + sessionId);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -89,7 +91,7 @@ public class MainActivity extends BaseActivity {
                 return DataRepository.getInstance().getProducts();
             } catch (Exception e) {
                 Log.e(TAG, "Error fetching products", e);
-                NewRelic.recordHandledException(e);
+                // NewRelic.recordHandledException(e);
                 return null;
             }
         }
@@ -136,13 +138,28 @@ public class MainActivity extends BaseActivity {
     }
 
     private void triggerANR() {
-        Toast.makeText(this, "Triggering ANR (Freeze) for 10s...", Toast.LENGTH_SHORT).show();
-        Log.i(TAG, "Triggering ANR...");
-        // Run heavy task on main thread
-        long endTime = System.currentTimeMillis() + 10000;
-        while (System.currentTimeMillis() < endTime) {
-            Math.sin(Math.random());
+        Toast.makeText(this, "Triggering ANR (Bubble Sort)...", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Triggering ANR with Bubble Sort...");
+
+        // Heavy computation on main thread
+        int[] array = new int[500000];
+        java.util.Random random = new java.util.Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt();
         }
+
+        // Bubble Sort
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+
+        Log.i(TAG, "ANR Bubble Sort Complete (if you see this, increase array size)");
     }
 
     @Override

@@ -31,6 +31,7 @@ public class CrashActivity extends AppCompatActivity {
             public void onFinish() {
                 timerText.setText("Crashing NOW!");
                 Log.e("CrashActivity", "Executing crashNow()");
+                // Challenge 5.1: Trigger Crash
                 NewRelic.crashNow();
             }
         }.start();

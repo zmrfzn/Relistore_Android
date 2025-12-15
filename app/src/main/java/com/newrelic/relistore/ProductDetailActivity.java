@@ -58,7 +58,7 @@ public class ProductDetailActivity extends BaseActivity {
                 .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(image);
 
-        // Record breadcrumb
+        // Challenge 2.1: Record Breadcrumb
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("product_id", product.getId());
         attributes.put("product_name", product.getName());
@@ -71,7 +71,7 @@ public class ProductDetailActivity extends BaseActivity {
             Log.i(TAG, "Adding to cart: " + product.getName());
             Cart.getInstance().add(product);
 
-            // Record custom event
+            // Challenge 4.1: Record Custom Event (AddToCart)
             Map<String, Object> eventAttributes = new HashMap<>();
             eventAttributes.put("product_id", product.getId());
             eventAttributes.put("product_name", product.getName());
@@ -103,6 +103,7 @@ public class ProductDetailActivity extends BaseActivity {
                 Log.i(TAG, "Product details fetched successfully");
             } else {
                 Log.e(TAG, "Error fetching product details", exception);
+                // Challenge 3.1: Record Handled Exception
                 NewRelic.recordHandledException(exception);
                 Toast.makeText(ProductDetailActivity.this, "Error loading details: " + exception.getMessage(),
                         Toast.LENGTH_LONG).show();

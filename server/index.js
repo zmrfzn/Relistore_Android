@@ -146,7 +146,7 @@ app.post('/checkout', (req, res) => {
     // Simulate processing delay
     setTimeout(() => {
         // Random failure (20% chance)
-        if (Math.random() < 0.2) {
+        if (Math.random() < 0.4) {
             console.error(`[ERROR] Payment failed for amount: $${total}`);
             res.status(500).json({ error: "Payment Gateway Timeout" });
         } else {

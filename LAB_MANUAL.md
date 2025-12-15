@@ -30,7 +30,7 @@ Before we touch the code, we need to generate the installation instructions and 
 
 ### Challenge 1.1: The Missing Plugin
 The project is missing the necessary Gradle configuration to talk to New Relic.
-*   **Task**: Modify `app/build.gradle` to apply the `newrelic` plugin and add the `android-agent` dependency.
+*   **Task**: Modify `app/build.gradle` to apply the `newrelic` plugin and add the `android-agent` dependency (use version `7.6.13`).
 *   *Hint*: Look for the `plugins` and `dependencies` blocks.
 
 ### Challenge 1.2: The Silent Start

@@ -27,7 +27,30 @@ if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "solution" ]; then
 fi
 EOF
 
+
 chmod +x .git/hooks/post-checkout
+
+echo "🔍 Checking for Node.js..."
+if ! command -v node &> /dev/null; then
+    echo "❌ Node.js is not installed. Please install before starting with the workshop."
+    exit 1
+fi
+
+NODE_VERSION=$(node -v | cut -d. -f1 | tr -d 'v')
+if [ "$NODE_VERSION" -lt 20 ]; then
+    echo "❌ Node.js v20+ is required. Found $(node -v). Please install before starting with the workshop."
+    exit 1
+fi
+echo "✅ Node.js $(node -v) found."
+
+echo "🚀 Starting backend server..."
+cd server
+npm install --silent
+# Start server in background and save PID
+nohup npm start > server.log 2>&1 &
+SERVER_PID=$!
+echo "✅ Server started (PID: $SERVER_PID)"
+cd ..
 
 
 

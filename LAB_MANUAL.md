@@ -111,9 +111,19 @@ We need to track every time a user shows intent to buy.
 
 ### Challenge 4.2: Segmentation (User Tiers)
 We want to compare the experience of "Premium" users vs "Standard" users.
-*   **Task**: In `MainActivity.java`, set a session-level attribute called `user_tier`.
-*   **Action**: Hardcode it to "Premium" for this workshop (or randomize it if you feel adventurous).
-*   *Hint*: `NewRelic.setAttribute(...)`
+*   **Task**: In `MainActivity.java`, set a custom user identifier to track individual sessions.
+*   **Action**: Use the `NewRelic.setUserId` method to associate the session with a specific user.
+*   *Hint*: `NewRelic.setUserId(...)`
+
+### Challenge 4.3: The Payment Mystery
+Users are complaining that payments are failing, but we don't know which payment method causes the most issues.
+*   **Task**: In `CheckoutActivity.java`, record detailed events for payment attempts.
+*   **Action**: 
+    1.  Add `userTier` and `paymentMethod` as session attributes.
+    2.  Start and end an interaction named "Checkout Process".
+    3.  Record a `PaymentFailure` custom event when checkout fails, including the `reason` and `amount`.
+    4.  Record a `PaymentSuccess` custom event when checkout succeeds, including `transactionId` and `amount`.
+*   *Hint*: `NewRelic.recordCustomEvent(...)`, `NewRelic.startInteraction(...)`
 
 ### Verification & Discovery
 1.  **Run the App**: Add multiple items to the cart.

@@ -68,9 +68,11 @@ public class CheckoutActivity extends BaseActivity {
         String userTier = tiers[random.nextInt(tiers.length)];
         boolean loggedIn = random.nextBoolean();
 
-        NewRelic.setAttribute("userTier", userTier);
-        NewRelic.setAttribute("paymentMethod", paymentMethod); // Capture selected method
-        NewRelic.setAttribute("loggedIn", String.valueOf(loggedIn));
+        // Challenge 4.3: Attributes
+        // NewRelic.setAttribute("userTier", userTier);
+        // NewRelic.setAttribute("paymentMethod", paymentMethod); // Capture selected
+        // method
+        // NewRelic.setAttribute("loggedIn", String.valueOf(loggedIn));
 
         Log.i(TAG, "Attributes set: Tier=" + userTier + ", Method=" + paymentMethod + ", LoggedIn=" + loggedIn);
 
@@ -98,7 +100,9 @@ public class CheckoutActivity extends BaseActivity {
         @Override
         protected void onPreExecute() {
             Log.i(TAG, "Starting checkout interaction");
-            NewRelic.startInteraction("Checkout Process");
+            Log.i(TAG, "Starting checkout interaction");
+            // Challenge 4.3: Interaction
+            // NewRelic.startInteraction("Checkout Process");
         }
 
         @Override
@@ -108,7 +112,10 @@ public class CheckoutActivity extends BaseActivity {
             } catch (Exception e) {
                 Log.e(TAG, "Checkout failed", e);
                 this.exception = e;
-                NewRelic.recordHandledException(e);
+                Log.e(TAG, "Checkout failed", e);
+                this.exception = e;
+                // Challenge 4.3: Handled Exception
+                // NewRelic.recordHandledException(e);
                 return false;
             }
         }
@@ -126,7 +133,13 @@ public class CheckoutActivity extends BaseActivity {
                 eventAttributes.put("amount", Cart.getInstance().getTotal());
                 eventAttributes.put("itemCount", Cart.getInstance().getItems().size());
                 eventAttributes.put("transactionId", "TXN-" + System.currentTimeMillis());
-                NewRelic.recordCustomEvent("PaymentSuccess", eventAttributes);
+                // Record PaymentSuccess event
+                Map<String, Object> eventAttributes = new HashMap<>();
+                eventAttributes.put("amount", Cart.getInstance().getTotal());
+                eventAttributes.put("itemCount", Cart.getInstance().getItems().size());
+                eventAttributes.put("transactionId", "TXN-" + System.currentTimeMillis());
+                // Challenge 4.3: Custom Event
+                // NewRelic.recordCustomEvent("PaymentSuccess", eventAttributes);
 
                 Cart.getInstance().clear();
             } else {
@@ -144,11 +157,18 @@ public class CheckoutActivity extends BaseActivity {
                 Map<String, Object> eventAttributes = new HashMap<>();
                 eventAttributes.put("amount", Cart.getInstance().getTotal());
                 eventAttributes.put("reason", exception != null ? exception.getMessage() : "Unknown");
-                NewRelic.recordCustomEvent("PaymentFailure", eventAttributes);
+                // Record PaymentFailure event
+                Map<String, Object> eventAttributes = new HashMap<>();
+                eventAttributes.put("amount", Cart.getInstance().getTotal());
+                eventAttributes.put("reason", exception != null ? exception.getMessage() : "Unknown");
+                // Challenge 4.3: Custom Event
+                // NewRelic.recordCustomEvent("PaymentFailure", eventAttributes);
             }
 
             btnHome.setVisibility(View.VISIBLE);
-            NewRelic.endInteraction("Checkout Process");
+            btnHome.setVisibility(View.VISIBLE);
+            // Challenge 4.3: Interaction
+            // NewRelic.endInteraction("Checkout Process");
         }
     }
 }

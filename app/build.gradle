@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     // Challenge 1.1: Add the New Relic plugin here
-    // id 'newrelic'
+    id 'newrelic'
 }
 
 android {
@@ -40,8 +40,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     // Challenge 1.1: Add the New Relic agent dependency here
-    // implementation("com.newrelic.agent.android:android-agent:7.6.13")
-    // implementation 'com.newrelic.agent.android:agent-ndk:1.0.3'
+    implementation("com.newrelic.agent.android:android-agent:7.6.13")
+    implementation 'com.newrelic.agent.android:agent-ndk:1.0.3'
     implementation 'androidx.navigation:navigation-fragment:2.8.4'
     implementation 'androidx.navigation:navigation-ui:2.8.4'
     //testImplementation 'junit:junit:4.13.2'

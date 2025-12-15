@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-// import com.newrelic.agent.android.NewRelic;
+import com.newrelic.agent.android.NewRelic;
 import android.util.Log;
 
 public class CrashActivity extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class CrashActivity extends AppCompatActivity {
                 timerText.setText("Crashing NOW!");
                 Log.e("CrashActivity", "Executing crashNow()");
                 // Challenge 5.1: Trigger Crash
-                // NewRelic.crashNow();
+                NewRelic.crashNow();
             }
         }.start();
         Log.i("CrashActivity", "Crash timer started...");

@@ -68,9 +68,9 @@ public class DataRepository {
         Log.i(TAG, "Initiating checkout with method: " + paymentMethod);
 
         // Simulate failure rates based on payment method
-        double failureRate = 0.20; // Default 20% for Credit Card
+        double failureRate = 0.30; // 30% for Credit Card
         if ("PayPal".equalsIgnoreCase(paymentMethod) || "Apple Pay".equalsIgnoreCase(paymentMethod)) {
-            failureRate = 0.60; // 60% for others
+            failureRate = 0.80; // 80% for others
         }
 
         if (Math.random() < failureRate) {

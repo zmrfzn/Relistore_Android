@@ -33,6 +33,7 @@ chmod +x .git/hooks/post-checkout
 
 echo "✅ Workshop environment ready!"
 echo "📁 You're on the 'workshop' branch - good luck!"
+echo "👉 Run 'cd relistore_android' to enter the project directory"
 echo ""
 echo "💡 Tip: Focus on solving the challenges yourself first."
 echo "   Solutions will be provided at the end of the session."

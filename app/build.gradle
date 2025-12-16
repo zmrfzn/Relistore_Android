@@ -1,8 +1,7 @@
-plugins {
-    id 'com.android.application'
+
+apply plugin:  'com.android.application'
     // Challenge 1.1: Add the New Relic plugin here
-    // id 'newrelic'
-}
+// apply plugin: 'newrelic'
 
 android {
     namespace 'com.newrelic.relistore'

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.newrelic.relistore.data.DataRepository;
 import com.newrelic.relistore.model.Cart;
-import com.newrelic.agent.android.NewRelic;
+// import com.newrelic.agent.android.NewRelic;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -133,11 +133,7 @@ public class CheckoutActivity extends BaseActivity {
                 eventAttributes.put("amount", Cart.getInstance().getTotal());
                 eventAttributes.put("itemCount", Cart.getInstance().getItems().size());
                 eventAttributes.put("transactionId", "TXN-" + System.currentTimeMillis());
-                // Record PaymentSuccess event
-                Map<String, Object> eventAttributes = new HashMap<>();
-                eventAttributes.put("amount", Cart.getInstance().getTotal());
-                eventAttributes.put("itemCount", Cart.getInstance().getItems().size());
-                eventAttributes.put("transactionId", "TXN-" + System.currentTimeMillis());
+
                 // Challenge 4.3: Custom Event
                 // NewRelic.recordCustomEvent("PaymentSuccess", eventAttributes);
 
@@ -157,10 +153,7 @@ public class CheckoutActivity extends BaseActivity {
                 Map<String, Object> eventAttributes = new HashMap<>();
                 eventAttributes.put("amount", Cart.getInstance().getTotal());
                 eventAttributes.put("reason", exception != null ? exception.getMessage() : "Unknown");
-                // Record PaymentFailure event
-                Map<String, Object> eventAttributes = new HashMap<>();
-                eventAttributes.put("amount", Cart.getInstance().getTotal());
-                eventAttributes.put("reason", exception != null ? exception.getMessage() : "Unknown");
+
                 // Challenge 4.3: Custom Event
                 // NewRelic.recordCustomEvent("PaymentFailure", eventAttributes);
             }
